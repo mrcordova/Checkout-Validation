@@ -50,7 +50,11 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(event: Event) {
+    console.log(this.shippingAddressForm);
     console.log(event);
   }
 
+  onInvalidSubmit() {
+    console.log("invlaid")
+  }
 }
