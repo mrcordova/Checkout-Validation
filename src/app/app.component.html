@@ -147,7 +147,7 @@
       </div>
     </section>
 
-    <form [formGroup]="shippingAddressForm" (ngSubmit)="onSubmit($event)">
+    <form [formGroup]="shippingAddressForm" (ngSubmit)="onSubmit($event)" #customerForm="ngForm">
 
       <div class="pt-16 pb-36 px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1">
         <div class="max-w-lg mx-auto lg:max-w-none">
@@ -165,7 +165,7 @@
 
                 </div>
                 <!-- error message for invalid first name -->
-                <div *ngIf="first.errors?.required">
+                <div *ngIf="first.errors != null && customerForm.submitted">
                   First Name field can not be empty
                 </div>
 
@@ -180,7 +180,7 @@
                     formControlName="last">
                 </div>
                 <!-- error message for invalid last name -->
-                <div *ngIf="last.errors?.required">
+                <div *ngIf="last.errors != null && customerForm.submitted">
                   Last Name field can not be empty
                 </div>
               </div>
@@ -207,7 +207,7 @@
                 </div>
 
                 <!-- error message for invalid address name -->
-                <div *ngIf="address.errors?.required">
+                <div *ngIf="address.errors != null && customerForm.submitted">
                   Address field can not be empty
                 </div>
               </div>
@@ -232,7 +232,7 @@
                 </div>
 
                 <!-- error message for invalid city name -->
-                <div *ngIf="city.errors?.required">
+                <div *ngIf="city.errors != null && customerForm.submitted">
                   City field can not be empty
                 </div>
               </div>
@@ -247,7 +247,7 @@
                 </div>
 
                 <!-- error message for invalid state name -->
-                <div *ngIf="state.valid && state.touched">
+                <div *ngIf="state.errors != null && customerForm.submitted">
                   State field can only be two charcters. ex: California = CA
                 </div>
               </div>
@@ -262,9 +262,9 @@
                 </div>
 
                 <!-- error message for invalid zipcode name -->
-                <label for="postal-code" *ngIf="postal_code.errors?.required">
+                <div *ngIf="postal_code.errors != null && customerForm.submitted">
                   Postal Code field has 5 number limit
-                </label>
+                </div>
               </div>
             </div>
           </section>
