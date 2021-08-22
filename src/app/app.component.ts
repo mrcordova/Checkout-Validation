@@ -11,8 +11,8 @@ import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@ang
 export class AppComponent implements OnInit {
 
   shippingAddressForm = this.formBuilder.group({
-    first: ["", Validators.required],
-    last: ["", Validators.required],
+    first: [""],
+    last: [""],
     company: ["",],
     address: ["", Validators.required],
     apartment: ["",],
