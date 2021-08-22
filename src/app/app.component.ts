@@ -25,9 +25,29 @@ export class AppComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit() {
+  ngOnInit() { }
 
-
+  get first() {
+    return this.shippingAddressForm.controls['first'];
   }
+  get last() {
+    return this.shippingAddressForm.controls['last'];
+  }
+  get company() {
+    return this.shippingAddressForm.controls['company'];
+  }
+  get address() {
+    return this.shippingAddressForm.controls['address'];
+  }
+  get city() {
+    return this.shippingAddressForm.controls['city'];
+  }
+  get state() {
+    return this.shippingAddressForm.controls['state'];
+  }
+  get postal_code() {
+    return this.shippingAddressForm.controls['postal_code'];
+  }
+
 
 }
