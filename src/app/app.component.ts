@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
     address: ["", Validators.required],
     apartment: ["",],
     city: ["", Validators.required],
-    state: ["", Validators.required, Validators.minLength(2), Validators.maxLength(2)],
-    postal_code: ["", Validators.required, Validators.minLength(5), Validators.maxLength(5)],
+    state: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+    postal_code: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
   });;
 
 
@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(event: Event) {
+    event.preventDefault();
     console.log(this.shippingAddressForm);
     console.log(event);
   }

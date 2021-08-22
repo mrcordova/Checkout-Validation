@@ -165,7 +165,7 @@
 
                 </div>
                 <!-- error message for invalid first name -->
-                <div *ngIf="first.errors?.minLength">
+                <div *ngIf="first.errors?.required">
                   First Name field can not be empty
                 </div>
 
@@ -180,7 +180,7 @@
                     formControlName="last">
                 </div>
                 <!-- error message for invalid last name -->
-                <div *ngIf="last.errors?.minLength">
+                <div *ngIf="last.errors?.required">
                   Last Name field can not be empty
                 </div>
               </div>
@@ -207,7 +207,7 @@
                 </div>
 
                 <!-- error message for invalid address name -->
-                <div *ngIf="address.errors?.minLength">
+                <div *ngIf="address.errors?.required">
                   Address field can not be empty
                 </div>
               </div>
@@ -232,7 +232,7 @@
                 </div>
 
                 <!-- error message for invalid city name -->
-                <div *ngIf="city.errors?.minLength">
+                <div *ngIf="city.errors?.required">
                   City field can not be empty
                 </div>
               </div>
@@ -247,7 +247,7 @@
                 </div>
 
                 <!-- error message for invalid state name -->
-                <div *ngIf="state.errors?.minLength">
+                <div *ngIf="state.valid && state.touched">
                   State field can only be two charcters. ex: California = CA
                 </div>
               </div>
@@ -262,9 +262,9 @@
                 </div>
 
                 <!-- error message for invalid zipcode name -->
-                <div *ngIf="postal_code.errors?.minLength">
+                <label for="postal-code" *ngIf="postal_code.errors?.required">
                   Postal Code field has 5 number limit
-                </div>
+                </label>
               </div>
             </div>
           </section>
