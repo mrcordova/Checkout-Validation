@@ -206,7 +206,7 @@
                     formControlName="address">
                 </div>
 
-                <!-- error message for invalid last name -->
+                <!-- error message for invalid address name -->
                 <div *ngIf="address.errors?.minLength">
                   Address field can not be empty
                 </div>
@@ -231,7 +231,7 @@
                     formControlName="city">
                 </div>
 
-                <!-- error message for invalid last name -->
+                <!-- error message for invalid city name -->
                 <div *ngIf="city.errors?.minLength">
                   City field can not be empty
                 </div>
@@ -246,7 +246,7 @@
                     formControlName="state">
                 </div>
 
-                <!-- error message for invalid last name -->
+                <!-- error message for invalid state name -->
                 <div *ngIf="state.errors?.minLength">
                   State field can only be two charcters. ex: California = CA
                 </div>
@@ -261,7 +261,7 @@
                     formControlName="postal_code">
                 </div>
 
-                <!-- error message for invalid last name -->
+                <!-- error message for invalid zipcode name -->
                 <div *ngIf="postal_code.errors?.minLength">
                   Postal Code field has 5 number limit
                 </div>
