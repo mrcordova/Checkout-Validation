@@ -49,5 +49,8 @@ export class AppComponent implements OnInit {
     return this.shippingAddressForm.controls['postal_code'];
   }
 
+  onSubmit(event: Event) {
+    console.log(event);
+  }
 
 }
