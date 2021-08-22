@@ -54,7 +54,5 @@ export class AppComponent implements OnInit {
     console.log(event);
   }
 
-  onInvalidSubmit() {
-    console.log("invlaid")
-  }
+
 }
