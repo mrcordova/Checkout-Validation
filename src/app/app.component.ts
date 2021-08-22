@@ -10,10 +10,10 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 })
 export class AppComponent {
 
+  shippingAddressForm: FormGroup | undefined;
 
-
-  constructor(shippingAddressForm: FormGroup) {
-    shippingAddressForm = new FormGroup({
+  constructor() {
+    this.shippingAddressForm = new FormGroup({
       'first': new FormControl(null, Validators.required),
       'last': new FormControl(null),
       'company': new FormControl(null),
@@ -25,5 +25,5 @@ export class AppComponent {
     });
   }
 
-  title = 'joshs-frogs-interview';
+
 }
