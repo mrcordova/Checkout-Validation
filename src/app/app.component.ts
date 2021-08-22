@@ -11,14 +11,14 @@ import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@ang
 export class AppComponent implements OnInit {
 
   shippingAddressForm = this.formBuilder.group({
-    first: ["", Validators.required],
-    last: ["", Validators.required],
+    first: ["", [Validators.required, Validators.minLength(1)]],
+    last: ["", [Validators.required, Validators.minLength(1)]],
     company: ["",],
     address: ["", Validators.required],
     apartment: ["",],
     city: ["", Validators.required],
-    state: ["", Validators.required],
-    postal_code: ["", Validators.required],
+    state: ["", Validators.required, Validators.minLength(2), Validators.maxLength(2)],
+    postal_code: ["", Validators.required, Validators.minLength(5), Validators.maxLength(5)],
   });;
 
 
