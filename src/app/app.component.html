@@ -165,8 +165,8 @@
 
                 </div>
                 <!-- error message for invalid first name -->
-                <div>
-
+                <div *ngIf="first.errors?.minLength">
+                  First Name field can not be empty
                 </div>
 
               </div>
@@ -179,6 +179,10 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="last">
                 </div>
+                <!-- error message for invalid last name -->
+                <div *ngIf="last.errors?.minLength">
+                  Last Name field can not be empty
+                </div>
               </div>
 
               <!-- // Company -->
@@ -189,6 +193,8 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="company">
                 </div>
+
+
               </div>
 
               <!-- // Street Address -->
@@ -198,6 +204,11 @@
                   <input type="text" id="address" name="address" autocomplete="street-address"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="address">
+                </div>
+
+                <!-- error message for invalid last name -->
+                <div *ngIf="address.errors?.minLength">
+                  Address field can not be empty
                 </div>
               </div>
 
@@ -219,6 +230,11 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="city">
                 </div>
+
+                <!-- error message for invalid last name -->
+                <div *ngIf="city.errors?.minLength">
+                  City field can not be empty
+                </div>
               </div>
 
               <!-- //State -->
@@ -229,6 +245,11 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="state">
                 </div>
+
+                <!-- error message for invalid last name -->
+                <div *ngIf="state.errors?.minLength">
+                  State field can only be two charcters. ex: California = CA
+                </div>
               </div>
 
               <!-- // Zip Code -->
@@ -238,6 +259,11 @@
                   <input type="text" id="postal-code" name="postal-code" autocomplete="postal-code"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     formControlName="postal_code">
+                </div>
+
+                <!-- error message for invalid last name -->
+                <div *ngIf="postal_code.errors?.minLength">
+                  Postal Code field has 5 number limit
                 </div>
               </div>
             </div>
