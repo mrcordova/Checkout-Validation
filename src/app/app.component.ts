@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
@@ -8,11 +8,14 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   shippingAddressForm: FormGroup | undefined;
 
   constructor() {
+  }
+
+  ngOnInit() {
     this.shippingAddressForm = new FormGroup({
       'first': new FormControl(null, Validators.required),
       'last': new FormControl(null),
@@ -23,7 +26,7 @@ export class AppComponent {
       'state': new FormControl(null),
       'postal-code': new FormControl(null),
     });
-  }
 
+  }
 
 }
