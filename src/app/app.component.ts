@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
 
-
+import { HttpService } from './http.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   });;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private httpService: HttpService) {
   }
 
   ngOnInit() { }
@@ -53,8 +53,17 @@ export class AppComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log(this.shippingAddressForm);
-    console.log(event);
+
+    if (!this.shippingAddressForm.valid) return;
+
+    this.httpService.validateAddress({}).subscribe(val => {
+      console.log("Post successful", val)
+    },
+      error => {
+        console.log(error)
+      }
+    )
+
   }
 
 
