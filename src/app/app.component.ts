@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
 
 
     this.loading = true
-    this.httpService.validateAddress(addressObj).pipe(timeout(5000), finalize(() => this.loading = false)).subscribe((response: Record<string, any>) => {
+    this.httpService.validateAddress(addressObj).pipe(timeout(10000), finalize(() => this.loading = false)).subscribe((response: Record<string, any>) => {
       Object.keys(this.shippingAddressForm.controls).forEach(key => {
         this.shippingAddressForm.get(key)?.setValue(response[key]);
 
