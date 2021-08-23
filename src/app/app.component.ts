@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
 
       })
       this.shippingAddressForm.get('postalCode')?.setValue((this.shippingAddressForm.get('postalCode')?.value).substr(0, 5));
+      alert("Address Validated!")
       
     },
       (error) => this.displayErrors(error)
