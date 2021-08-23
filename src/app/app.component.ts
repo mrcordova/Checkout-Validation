@@ -6,6 +6,7 @@ import { finalize, timeout } from 'rxjs/operators';
 import { HttpService } from './http.service';
 import { AddressValidator } from './AddressValidator';
 import { PostalCodeValidator } from './PostalCodeValidator';
+import { StateValidator } from './StateValidator';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     line1: ["", [Validators.required, AddressValidator()]],
     line2: ["",],
     city: ["", Validators.required],
-    state: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+    state: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2), StateValidator()]],
     postalCode: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(5), PostalCodeValidator()]],
   });;
 
