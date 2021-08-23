@@ -15,6 +15,8 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 
   loading = false;
+  showNetworkErrors = false;
+  errors : String = "";
 
   shippingAddressForm = this.formBuilder.group({
     firstName: [""],
@@ -55,6 +57,8 @@ export class AppComponent implements OnInit {
         this.shippingAddressForm.get(key)?.setValue(response[key]);
 
       })
+      this.shippingAddressForm.get('postalCode')?.setValue((this.shippingAddressForm.get('postalCode')?.value).substr(0, 5));
+      
     },
       (error) => {
         if (error.status == 404) {
@@ -68,6 +72,9 @@ export class AppComponent implements OnInit {
         
         }
         alert(error);
+        this.errors = error.message;
+        console.log(this.errors)
+        this.showNetworkErrors = true;
       }
     )
 
