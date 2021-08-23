@@ -4,7 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { finalize, timeout } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
-
+import { AddressValidator } from './AddressValidator';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     firstName: [""],
     lastName: [""],
     company: ["",],
-    line1: ["", Validators.required],
+    line1: ["", [Validators.required, AddressValidator()]],
     line2: ["",],
     city: ["", Validators.required],
     state: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
       addressObj[key] = this.shippingAddressForm.get(key)?.value;
     })
 
+  
     
     addressObj["country"] = "US";
     addressObj["residential"] = "false";

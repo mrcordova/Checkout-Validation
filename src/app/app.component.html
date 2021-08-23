@@ -204,6 +204,18 @@
                 <div *ngIf="line1.errors != null && customerForm.submitted"   class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg">
                   Address field can not be empty
                 </div>
+                <div *ngIf="line1.errors?.AddressNotValid">
+                  <div *ngIf="line1.errors?.AddressNotValid.hasNumeric">
+                    Address is missing numbers
+                  </div>
+                  <div *ngIf="line1.errors?.AddressNotValid.hasLetters">
+                    Address is missing letters
+                  </div>
+                  <div *ngIf="line1.errors?.AddressNotValid.hasOrder">
+                    {{line1.errors?.AddressNotValid.hasOrder}}
+                    Address not in proper order. Ex of proper order: 123 Fake St.
+                  </div>
+                </div>
               </div>
 
               <!-- // Apartment -->
