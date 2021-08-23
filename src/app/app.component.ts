@@ -63,26 +63,10 @@ export class AppComponent implements OnInit {
       addressObj[key] = this.shippingAddressForm.get(key)?.value;
     })
 
-
-    // if (!this.shippingAddressForm.valid) return;
-
-    // const obj = {
-    //   "firstName": "",
-    //   "lastName": "",
-    //   "company": "",
-    //   "line1": this.shippingAddressForm.get("line1")?.value,
-    //   "line2": "apt #3",
-    //   "city": "pacoima",
-    //   "state": "CA",
-    //   "postalCode": "91331",
-    //   "country": "US",
-    //   "residential": true
-    // }
-
     addressObj["country"] = "US";
     addressObj["residential"] = "false";
 
-    // console.log(obj);
+
     this.httpService.validateAddress(addressObj).subscribe(val => {
       console.log("Post successful", val)
     },
