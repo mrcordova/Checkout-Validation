@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
 
-    const formFields = this.shippingAddressForm.controls;
     const addressObj: Record<string, any> = {};
 
     Object.keys(this.shippingAddressForm.controls).forEach(key => {
@@ -62,7 +61,7 @@ export class AppComponent implements OnInit {
     })
 
 
-    if (!this.shippingAddressForm.valid) return;
+    // if (!this.shippingAddressForm.valid) return;
 
 
     this.httpService.validateAddress(addressObj).subscribe(val => {
