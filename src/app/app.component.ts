@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
 
@@ -11,6 +12,8 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  loading = false;
 
   shippingAddressForm = this.formBuilder.group({
     firstName: [""],
@@ -45,7 +48,8 @@ export class AppComponent implements OnInit {
     addressObj["residential"] = "false";
 
 
-    this.httpService.validateAddress(addressObj).subscribe((response: Record<string, any>) => {
+    this.loading = true
+    this.httpService.validateAddress(addressObj).pipe(finalize(() => this.loading = false)).subscribe((response: Record<string, any>) => {
       Object.keys(this.shippingAddressForm.controls).forEach(key => {
         this.shippingAddressForm.get(key)?.setValue(response[key]);
 
@@ -53,9 +57,9 @@ export class AppComponent implements OnInit {
     },
       (error) => {
         if (error.status == 404) {
-          alert("URL not found")
+          alert("URL could not be found")
         } else if (error.status == 400) {
-          alert("Bad Request: Address inproperly sent")
+          alert("Bad Request: Address improperly sent")
         } else if (error.status == 500) {
           alert(error.error.message)
         }
