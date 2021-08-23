@@ -67,11 +67,20 @@ export class AppComponent implements OnInit {
     addressObj["residential"] = "false";
 
 
-    this.httpService.validateAddress(addressObj).subscribe(val => {
-      console.log("Post successful", val)
+    this.httpService.validateAddress(addressObj).subscribe((response: Record<string, any>) => {
+      Object.keys(this.shippingAddressForm.controls).forEach(key => {
+        this.shippingAddressForm.get(key)?.setValue(response[key]);
+
+      })
     },
-      error => {
-        console.log("here", error)
+      (error: Response) => {
+        if (error.status == 404) {
+          alert("URL not found")
+        } else if (error.status == 400) {
+          alert("Bad Request: Address maybe missing required info")
+        } else if (error.status == 500) {
+          alert("Address not validated")
+        }
       }
     )
 
