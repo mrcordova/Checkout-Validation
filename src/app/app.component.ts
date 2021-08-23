@@ -13,14 +13,14 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 
   shippingAddressForm = this.formBuilder.group({
-    first: [""],
-    last: [""],
+    firstName: [""],
+    lastName: [""],
     company: ["",],
-    address: ["", Validators.required],
-    apartment: ["",],
+    line1: ["", Validators.required],
+    line2: ["",],
     city: ["", Validators.required],
     state: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
-    postal_code: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+    postalCode: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
   });;
 
 
@@ -29,17 +29,20 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { }
 
-  get first() {
-    return this.shippingAddressForm.controls['first'];
+  get firstName() {
+    return this.shippingAddressForm.controls['firstName'];
   }
-  get last() {
-    return this.shippingAddressForm.controls['last'];
+  get lastName() {
+    return this.shippingAddressForm.controls['lastName'];
   }
   get company() {
     return this.shippingAddressForm.controls['company'];
   }
-  get address() {
-    return this.shippingAddressForm.controls['address'];
+  get line1() {
+    return this.shippingAddressForm.controls['line1'];
+  }
+  get line2() {
+    return this.shippingAddressForm.controls['line2'];
   }
   get city() {
     return this.shippingAddressForm.controls['city'];
@@ -47,8 +50,8 @@ export class AppComponent implements OnInit {
   get state() {
     return this.shippingAddressForm.controls['state'];
   }
-  get postal_code() {
-    return this.shippingAddressForm.controls['postal_code'];
+  get postalCode() {
+    return this.shippingAddressForm.controls['postalCode'];
   }
 
   onSubmit(event: Event) {
@@ -63,12 +66,28 @@ export class AppComponent implements OnInit {
 
     // if (!this.shippingAddressForm.valid) return;
 
+    // const obj = {
+    //   "firstName": "",
+    //   "lastName": "",
+    //   "company": "",
+    //   "line1": this.shippingAddressForm.get("line1")?.value,
+    //   "line2": "apt #3",
+    //   "city": "pacoima",
+    //   "state": "CA",
+    //   "postalCode": "91331",
+    //   "country": "US",
+    //   "residential": true
+    // }
 
+    addressObj["country"] = "US";
+    addressObj["residential"] = "false";
+
+    // console.log(obj);
     this.httpService.validateAddress(addressObj).subscribe(val => {
       console.log("Post successful", val)
     },
       error => {
-        console.log(error)
+        console.log("here", error)
       }
     )
 

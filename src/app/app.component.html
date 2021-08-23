@@ -161,7 +161,7 @@
                 <div class="mt-1">
                   <input type="text" id="first" name="province"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    formControlName="first">
+                    formControlName="firstName">
 
                 </div>
 
@@ -174,7 +174,7 @@
                 <div class="mt-1">
                   <input type="text" id="last" name="province"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    formControlName="last">
+                    formControlName="lastName">
                 </div>
 
               </div>
@@ -197,11 +197,11 @@
                 <div class="mt-1">
                   <input type="text" id="address" name="address" autocomplete="street-address"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    formControlName="address">
+                    formControlName="line1">
                 </div>
 
                 <!-- error message for invalid address name -->
-                <div *ngIf="address.errors != null && customerForm.submitted">
+                <div *ngIf="line1.errors != null && customerForm.submitted">
                   Address field can not be empty
                 </div>
               </div>
@@ -212,7 +212,7 @@
                 <div class="mt-1">
                   <input type="text" id="apartment" name="apartment"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    formControlName="apartment">
+                    formControlName="line2">
                 </div>
               </div>
 
@@ -252,11 +252,11 @@
                 <div class="mt-1">
                   <input type="text" id="postal-code" name="postal-code" autocomplete="postal-code"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    formControlName="postal_code">
+                    formControlName="postalCode">
                 </div>
 
                 <!-- error message for invalid zipcode name -->
-                <div *ngIf="postal_code.errors != null && customerForm.submitted">
+                <div *ngIf="postalCode.errors != null && customerForm.submitted">
                   Postal Code field has 5 number limit
                 </div>
               </div>
