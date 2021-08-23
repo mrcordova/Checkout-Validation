@@ -63,6 +63,9 @@ export class AppComponent implements OnInit {
           alert("Bad Request: Address improperly sent")
         } else if (error.status == 500) {
           alert(error.error.message)
+        } else if ( error.status == 504){
+          alert(`Gateway timeout:  ${error.error}`);
+        
         }
         alert(error);
       }
