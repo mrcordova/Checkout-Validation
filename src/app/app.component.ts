@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
       addressObj[key] = this.shippingAddressForm.get(key)?.value;
     })
 
-    delete addressObj.line1
+    
     addressObj["country"] = "US";
     addressObj["residential"] = "false";
 
