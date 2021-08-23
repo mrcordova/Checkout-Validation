@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { finalize, timeout, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Validators, FormBuilder } from '@angular/forms';
+import { finalize, timeout } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
 
