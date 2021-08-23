@@ -29,6 +29,40 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { }
 
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+
+    if (!this.shippingAddressForm.valid) return;
+
+    const addressObj: Record<string, any> = {};
+
+    Object.keys(this.shippingAddressForm.controls).forEach(key => {
+      addressObj[key] = this.shippingAddressForm.get(key)?.value;
+    })
+
+    addressObj["country"] = "US";
+    addressObj["residential"] = "false";
+
+
+    this.httpService.validateAddress(addressObj).subscribe((response: Record<string, any>) => {
+      Object.keys(this.shippingAddressForm.controls).forEach(key => {
+        this.shippingAddressForm.get(key)?.setValue(response[key]);
+
+      })
+    },
+      (error) => {
+        if (error.status == 404) {
+          alert("URL not found")
+        } else if (error.status == 400) {
+          alert("Bad Request: Address inproperly sent")
+        } else if (error.status == 500) {
+          alert(error.error.message)
+        }
+      }
+    )
+
+  }
   get firstName() {
     return this.shippingAddressForm.controls['firstName'];
   }
@@ -52,38 +86,6 @@ export class AppComponent implements OnInit {
   }
   get postalCode() {
     return this.shippingAddressForm.controls['postalCode'];
-  }
-
-  onSubmit(event: Event) {
-    event.preventDefault();
-
-    const addressObj: Record<string, any> = {};
-
-    Object.keys(this.shippingAddressForm.controls).forEach(key => {
-      addressObj[key] = this.shippingAddressForm.get(key)?.value;
-    })
-
-    addressObj["country"] = "US";
-    addressObj["residential"] = "false";
-
-
-    this.httpService.validateAddress(addressObj).subscribe((response: Record<string, any>) => {
-      Object.keys(this.shippingAddressForm.controls).forEach(key => {
-        this.shippingAddressForm.get(key)?.setValue(response[key]);
-
-      })
-    },
-      (error: Response) => {
-        if (error.status == 404) {
-          alert("URL not found")
-        } else if (error.status == 400) {
-          alert("Bad Request: Address maybe missing required info")
-        } else if (error.status == 500) {
-          alert("Address not validated")
-        }
-      }
-    )
-
   }
 
 
