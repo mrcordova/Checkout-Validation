@@ -15,9 +15,9 @@ export class HttpService {
 
 
   validateAddress(address: Object) {
-    const validateURL = '/api/validate';
+    const validateURL = '/api';
 
-    return this.http.post(validateURL, address)
+    return this.http.post(validateURL, address);
 
   }
 }
