@@ -241,8 +241,13 @@
                 </div>
 
                 <!-- error message for invalid state name -->
-                <div    class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg" *ngIf="state.errors != null && customerForm.submitted">
-                  State field can only be two charcters. ex: California = CA
+                <div *ngIf="customerForm.submitted">
+                  <div *ngIf="state.errors?.required" class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg">
+                   State Field can not be empty
+                  </div>
+                  <div *ngIf="state.errors?.minlength || state.errors?.maxlength " class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg">
+                    State Field must be 2 characters long. ex: California = CA.
+                   </div>
                 </div>
               </div>
 
@@ -256,8 +261,14 @@
                 </div>
 
                 <!-- error message for invalid zipcode name -->
-                <div  class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg" *ngIf="postalCode.errors != null && customerForm.submitted" >
-                  Postal Code field has 5 number limit 
+                <div *ngIf="customerForm.submitted">
+                  <div  class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg" *ngIf="postalCode.errors?.required " >
+                    Postal Code field can not be empty  
+                  </div>
+                  <div  class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg" *ngIf="postalCode.errors?.minlength || postalCode.errors?.maxlength" >
+                    Postal Code field must be 5 characters long
+                  </div>
+
                 </div>
               </div>
             </div>
