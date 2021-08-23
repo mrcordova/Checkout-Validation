@@ -54,9 +54,18 @@ export class AppComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
 
+    const formFields = this.shippingAddressForm.controls;
+    const addressObj: Record<string, any> = {};
+
+    Object.keys(this.shippingAddressForm.controls).forEach(key => {
+      addressObj[key] = this.shippingAddressForm.get(key)?.value;
+    })
+
+
     if (!this.shippingAddressForm.valid) return;
 
-    this.httpService.validateAddress({}).subscribe(val => {
+
+    this.httpService.validateAddress(addressObj).subscribe(val => {
       console.log("Post successful", val)
     },
       error => {

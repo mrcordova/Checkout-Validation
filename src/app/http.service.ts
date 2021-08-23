@@ -14,10 +14,10 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
 
-  validateAddress(address: any) {
+  validateAddress(address: Object) {
     const validateURL = 'validate';
 
-    return this.http.post(this.url + validateURL, { ...address })
+    return this.http.post(this.url + validateURL, address)
 
   }
 }
