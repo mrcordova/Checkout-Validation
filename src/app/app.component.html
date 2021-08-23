@@ -204,7 +204,7 @@
                 <div *ngIf="line1.errors != null && customerForm.submitted"   class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg">
                   Address field can not be empty
                 </div>
-                <div *ngIf="line1.errors?.AddressNotValid">
+                <div *ngIf="line1.errors?.AddressNotValid" class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg">
                   <div *ngIf="line1.errors?.AddressNotValid.hasNumeric">
                     Address is missing numbers
                   </div>
@@ -281,6 +281,9 @@
                     Postal Code field must be 5 characters long
                   </div>
 
+                </div>
+                <div  class="bg-red-200 relative text-red-500 py-3 px-3 rounded-lg" *ngIf="postalCode.errors?.notNumber">
+                  Postal Code entered is not a number
                 </div>
               </div>
             </div>
