@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
       addressObj[key] = this.shippingAddressForm.get(key)?.value;
     })
 
+    delete addressObj.line1
     addressObj["country"] = "US";
     addressObj["residential"] = "false";
 
@@ -62,14 +63,17 @@ export class AppComponent implements OnInit {
     },
       (error) => {
         if (error.status == 404) {
-          alert("URL could not be found")
+          alert(`${error.message}`)
+          this.errors = error.message;
         } else if (error.status == 400) {
-          alert("Bad Request: Address improperly sent")
+          alert(error.message)
+          this.errors =  error.message;
         } else if (error.status == 500) {
           alert(error.error.message)
+          this.errors = error.error.message
         } else if ( error.status == 504){
           alert(`Gateway timeout:  ${error.error}`);
-           this.errors = error.error;
+          this.errors = error.error;
         } else {
           this.errors = error.message;
         }
