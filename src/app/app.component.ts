@@ -63,15 +63,19 @@ export class AppComponent implements OnInit {
     },
       (error) => {
         if (error.status == 404) {
+          // 404: Not Found
           alert(`${error.message}`)
           this.errors = error.message;
         } else if (error.status == 400) {
+          // 400: Bad Request
           alert(error.message)
           this.errors =  error.message;
         } else if (error.status == 500) {
+          // 500: Internal Server error
           alert(error.error.message)
           this.errors = error.error.message
         } else if ( error.status == 504){
+          // 504: Timed out
           alert(`Gateway timeout:  ${error.error}`);
           this.errors = error.error;
         } else {
