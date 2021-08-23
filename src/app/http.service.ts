@@ -9,5 +9,15 @@ import { catchError, retry } from 'rxjs/operators'
 })
 export class HttpService {
 
+  private const url = https://interview.joshsfrogs.com/;
+
   constructor(private http: HttpClient) { }
+
+
+  validateAddress(address: any) {
+    const validateURL = 'validate';
+
+    return this.http.post(validateURL, { ...address })
+
+  }
 }
