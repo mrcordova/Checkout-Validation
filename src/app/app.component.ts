@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
+import { finalize, timeout, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import { HttpService } from './http.service';
 
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
 
 
     this.loading = true
-    this.httpService.validateAddress(addressObj).pipe(finalize(() => this.loading = false)).subscribe((response: Record<string, any>) => {
+    this.httpService.validateAddress(addressObj).pipe(timeout(10000), finalize(() => this.loading = false)).subscribe((response: Record<string, any>) => {
       Object.keys(this.shippingAddressForm.controls).forEach(key => {
         this.shippingAddressForm.get(key)?.setValue(response[key]);
 
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit {
         } else if (error.status == 500) {
           alert(error.error.message)
         }
+        alert(error);
       }
     )
 
