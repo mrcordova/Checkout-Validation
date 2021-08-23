@@ -53,10 +53,10 @@ const usStates = [
 	"WV",  
 	"WI", 
 	"WY"
-]
+];
 
 export function StateValidator(): ValidatorFn {
-    return (control:AbstractControl) : ValidationErrors | null = {
+    return (control:AbstractControl) : ValidationErrors | null => {
         if (!control.value) return null;
 
         const value = control.value;
