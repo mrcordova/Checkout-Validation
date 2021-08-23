@@ -149,20 +149,6 @@
 
     <form [formGroup]="shippingAddressForm" (ngSubmit)="onSubmit($event)" #customerForm="ngForm">
 
-      <!-- display network errors -->
-      <div  ></div>
-      <div *ngIf="showNetworkErrors" class="flex justify-between items-center bg-yellow-200 relative text-yellow-600 py-3 px-3 rounded-lg">
-        <div>
-            <!-- <span class="font-semibold text-yellow-700">Bummer !!!</span> -->
-            {{errors}}
-        </div>
-        <div>
-            <button type="button" class=" text-yellow-700">
-                <span class="text-2xl">&times;</span>
-            </button>
-        </div>
-    </div>
-
     <div class="pt-16 pb-36 px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1">
         <div class="max-w-lg mx-auto lg:max-w-none">
 
@@ -286,6 +272,18 @@
                 </div>
               </div>
             </div>
+             <!-- display network errors -->
+            <div *ngIf="showNetworkErrors" class="flex justify-between items-center bg-yellow-200 relative text-yellow-600 py-3 px-3 rounded-lg">
+                <div>
+                  <span class="font-semibold text-yellow-700">Bummer !!!</span>
+                  {{errors}}
+                </div>
+              <div>
+              <button type="button" class=" text-yellow-700" (click)="onDismiss()">
+                  <span class="text-2xl">&times;</span>
+              </button>
+              </div>
+            </div>
           </section>
 
           <!-- //Validate -->
@@ -306,9 +304,7 @@
                   integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" crossorigin="anonymous">
 
                 <div class="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50">
-                  <span class="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0" style="
-                    top: 50%;
-                ">
+                  <span class="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0" style="top: 50%">
                     <i class="fas fa-circle-notch fa-spin fa-5x"></i>
                     Loading
                   </span>
@@ -316,9 +312,9 @@
               </div>
 
             </div>
-
           </div>
         </div>
+        
       </div>
     </form>
 

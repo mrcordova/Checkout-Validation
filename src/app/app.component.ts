@@ -69,15 +69,19 @@ export class AppComponent implements OnInit {
           alert(error.error.message)
         } else if ( error.status == 504){
           alert(`Gateway timeout:  ${error.error}`);
-        
+           this.errors = error.error;
+        } else {
+          this.errors = error.message;
         }
-        alert(error);
-        this.errors = error.message;
-        console.log(this.errors)
         this.showNetworkErrors = true;
       }
     )
 
+
+  }
+  onDismiss() {
+    console.log("called dismiss")
+    this.showNetworkErrors = false;
   }
   get firstName() {
     return this.shippingAddressForm.controls['firstName'];
