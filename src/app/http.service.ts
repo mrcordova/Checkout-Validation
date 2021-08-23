@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators'
 })
 export class HttpService {
 
-  private const url = https://interview.joshsfrogs.com/;
+  private url = "https://interview.joshsfrogs.com/";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class HttpService {
   validateAddress(address: any) {
     const validateURL = 'validate';
 
-    return this.http.post(validateURL, { ...address })
+    return this.http.post(this.url + validateURL, { ...address })
 
   }
 }
