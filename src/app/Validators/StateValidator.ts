@@ -1,6 +1,6 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
-import UsStates from './UsStatesArray';
+import UsStates from '../UsStatesArray';
 
 export function StateValidator(): ValidatorFn {
     return (control:AbstractControl) : ValidationErrors | null => {

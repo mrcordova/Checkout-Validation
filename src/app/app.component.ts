@@ -4,9 +4,9 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { finalize, timeout } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
-import { AddressValidator } from './AddressValidator';
-import { PostalCodeValidator } from './PostalCodeValidator';
-import { StateValidator } from './StateValidator';
+import { AddressValidator } from './Validators/AddressValidator';
+import { PostalCodeValidator } from './Validators/PostalCodeValidator';
+import { StateValidator } from './Validators/StateValidator';
 
 @Component({
   selector: 'app-root',
