@@ -1,35 +1,5 @@
-# Josh's Frogs Interview
 
-This is a starter project used during the interview of prospective hires of Josh's Frogs. It's designed to assess a
-candidate's Angular and web-related skills.
-
-## Overview
-
-This project mimics one of the steps during checkout from an online store. The user is prompted to enter their billing
-address, which will then be validated against an API. In a normal checkout flow, if the billing address is valid, the
-user is allowed continue to the next step. Because this isn't a real checkout, updating the contents of the form with
-the values returned within the response is sufficient. It is not necessary to navigate to a new route or anything.
-
-You'll need to add basic input validation to the form. Then, if and only if the form is valid, place an API call
-validate the address. The API will respond with a validated address or with an error. In the case of a successful
-validation, you should update the contents of the form with the returned address. In the case of an error, please
-indicate that to the user, in a user-friendly manner.
-
-This assessment will be used to evaluate your development process. Please utilize Git to maintain a history of code
-changes as you make changes to this repository. Write useful commit messages and commit with some degree of frequency.
-
-Please use Angular's built-in HttpClient to make your API calls and demonstrate good reactive flow when using the
-HttpClient.
-
-Keep in mind that, while not the main objective, please strive to create a nice looking design, that is cohesive with
-the look-and-feel of the provided layout.
-
-Avoid adding any additional third-party libraries, unless absolutely necessary for your solution.
-
-## Requirements
-
-A complete project meets all the following objectives:
-
+## Goals
 1. It builds successfully after checkout and `npm install` is run in the root directory.
 2. It should be responsive, the starting code looks good on mobile and desktop. Don't break that!
 3. It properly validates the form input to ensure that the required entry is there before calling the API. Input
@@ -48,15 +18,6 @@ Josh's Frogs
 8751 Monroe Rd.
 Durand, MI 48429
 ```
-
-## Getting Started
-
-Please clone this repository to get started. **Forking the is discouraged**, as we do not want other candidates to see
-your work.
-
-Please submit a zipped archive with the `.git` folder fully intact, as part of this exercise is to demonstrate good use
-of commit messages to document code changes. Submission of the `node_modules` directory is not needed, please exclude
-from your archive.
 
 ## What's in the box?
 
